@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structure", "Structure\Structure.csproj", "{BC8F2067-4B0C-404D-9AD8-9593623FCA6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProELib", "..\ProELib\ProELib.csproj", "{D95EAF25-B7F5-4C5C-8968-F49B3EEEE833}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC8F2067-4B0C-404D-9AD8-9593623FCA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8F2067-4B0C-404D-9AD8-9593623FCA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8F2067-4B0C-404D-9AD8-9593623FCA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8F2067-4B0C-404D-9AD8-9593623FCA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D95EAF25-B7F5-4C5C-8968-F49B3EEEE833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D95EAF25-B7F5-4C5C-8968-F49B3EEEE833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D95EAF25-B7F5-4C5C-8968-F49B3EEEE833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D95EAF25-B7F5-4C5C-8968-F49B3EEEE833}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿<Window x:Class="Structure.UI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Структурная схема" Height="200" Width="400">
+    <Grid Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Проект:" SnapsToDevicePixels="True">
+            <RichTextBox Name="richTextBox" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" IsHitTestVisible="False">
+                <FlowDocument>
+                    <Paragraph FontSize="14" TextAlignment="Center"/>
+                </FlowDocument>
+            </RichTextBox>
+        </GroupBox>
+        <Button Content="Сделать" Name="ActionButton" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="25" Grid.Row="1" Click="ActionButton_Click"/>
+    </Grid>
+
+</Window>
