@@ -58,16 +58,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddressWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddressWindow.xaml.cs">
+      <DependentUpon>AddressWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Location.cs" />
     <Compile Include="ProjectEntities.cs" />
     <Compile Include="Script.cs" />
+    <Compile Include="ScriptType.cs" />
     <Compile Include="UI.xaml.cs">
       <DependentUpon>UI.xaml</DependentUpon>
       <SubType>Code</SubType>

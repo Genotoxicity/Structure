@@ -31,10 +31,10 @@ namespace Structure
             else
             {
                 richTextBox.AppendText(applicationInfo.StatusReasonDescription);
-                ActionButton.IsEnabled = false;
+                AddressButton.IsEnabled = false;
             }
         }
-        private void ActionButton_Click(object sender, RoutedEventArgs e)
+        private void AddressButton_Click(object sender, RoutedEventArgs e)
         {
             Cursor = Cursors.Wait;
             new Script().Start(applicationInfo.ProcessId);

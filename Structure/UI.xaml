@@ -14,7 +14,7 @@
                 </FlowDocument>
             </RichTextBox>
         </GroupBox>
-        <Button Content="Сделать" Name="ActionButton" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="25" Grid.Row="1" Click="ActionButton_Click"/>
+        <Button Content="Адреса" Name="AddressButton" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="25" Grid.Row="1" Click="AddressButton_Click"/>
     </Grid>
 
 </Window>

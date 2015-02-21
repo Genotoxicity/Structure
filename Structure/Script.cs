@@ -15,29 +15,49 @@ namespace Structure
         {
             E3Project project = new E3Project(processId);
             ProjectEntities projectEntities = new ProjectEntities(project);
-            List<int> communicationDeviceIds = GetCommunicationDeviceIds(project, projectEntities);
+            Dictionary<string, Location> locationByName = GetLocationByName(project, projectEntities);
+            AddressWindow addressWindow = new AddressWindow(locationByName);
+            addressWindow.Show();
             project.Release();
         }
 
-        private static List<int> GetCommunicationDeviceIds(E3Project project, ProjectEntities projectEntities)
+        private Dictionary<string, Location> GetLocationByName(E3Project project, ProjectEntities projectEntities)
         {
             Sheet sheet = projectEntities.Sheet;
             NormalDevice device = projectEntities.NormalDevice;
             List<int> planSheetIds = project.GetSheetIdsByType(PlanCode);
-            List<int> symbolIds = new List<int>();
+            HashSet<int> addedDeviceIds = new HashSet<int>();
+            Dictionary<string, Location> locationByName = new Dictionary<string, Location>();
             foreach (int sheetId in planSheetIds)
             {
                 sheet.Id = sheetId;
-                symbolIds.AddRange(sheet.SymbolIds);
+                foreach (int symbolId in sheet.SymbolIds)
+                {
+                    device.Id = symbolId;
+                    string location = String.Intern(device.Location);
+                    if (!String.IsNullOrEmpty(location))
+                    {
+                        int deviceId = device.Id;
+                        if (!locationByName.ContainsKey(location))
+                            locationByName.Add(location, new Location(location));
+                        locationByName[location].AddDeviceId(deviceId);
+                        addedDeviceIds.Add(deviceId);
+                    }
+                }
             }
-            List<int> communicationDeviceIds = new List<int>();
-            foreach (int symbolId in symbolIds)
+            List<int> deviceIds = project.DeviceIds;
+            deviceIds.AddRange(project.TerminalIds);
+            foreach (int deviceId in deviceIds)
             {
-                device.Id = symbolId;
-                if (!String.IsNullOrEmpty(device.Location))
-                    communicationDeviceIds.Add(device.Id);
+                if (!addedDeviceIds.Contains(deviceId))
+                {
+                    device.Id = deviceId;
+                    string location = String.Intern(device.Location);
+                    if (locationByName.ContainsKey(location))
+                        locationByName[location].AddDeviceId(deviceId);
+                }
             }
-            return communicationDeviceIds;
+            return locationByName;
         }
     }
 
