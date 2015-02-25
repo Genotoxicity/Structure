@@ -19,12 +19,24 @@ namespace Structure
     /// </summary>
     partial class AddressWindow : Window
     {
-        public AddressWindow(Dictionary<string, Location> locationByName)
+        private ProjectEntities projectEntities;
+        private Dictionary<string, Location> locationByName;
+
+        public AddressWindow(ProjectEntities projectEntities, Dictionary<string, Location> locationByName)
         {
             InitializeComponent();
+            this.projectEntities = projectEntities;
+            this.locationByName = locationByName;
             List<string> locationNames = locationByName.Keys.ToList();
             locationNames.Sort(new ProELib.Strings.NaturalSortingComparer());
             AddressListBox.ItemsSource = locationNames;
+        }
+
+        private void DevicesButton_Click(object sender, RoutedEventArgs e)
+        {
+            string location = AddressListBox.SelectedItem as string;
+            if (!String.IsNullOrEmpty(location))
+                new DevicesWindow(projectEntities, locationByName[location]).Show(); 
         }
     }
 }

@@ -32,3 +32,5 @@ D:\Work\Project\Csharp\Structure\Structure\obj\Debug\Structure.Properties.Resour
 D:\Work\Project\Csharp\Structure\Structure\obj\Debug\Structure.csproj.GenerateResource.Cache
 D:\Work\Project\Csharp\Structure\Structure\obj\Debug\AddressWindow.baml
 D:\Work\Project\Csharp\Structure\Structure\obj\Debug\AddressWindow.g.cs
+D:\Work\Project\Csharp\Structure\Structure\obj\Debug\DevicesWindow.baml
+D:\Work\Project\Csharp\Structure\Structure\obj\Debug\DevicesWindow.g.cs

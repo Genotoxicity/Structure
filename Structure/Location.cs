@@ -10,6 +10,14 @@ namespace Structure
     {
         private List<int> deviceIds;
 
+        public List<int> DeviceIds
+        {
+            get
+            {
+                return deviceIds;
+            }
+        }
+
         public string Name { get; private set; }
                 
         public Location(string name)
