@@ -81,9 +81,9 @@
       <DependentUpon>DevicesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Location.cs" />
-    <Compile Include="ProjectEntities.cs" />
     <Compile Include="Script.cs" />
     <Compile Include="ScriptType.cs" />
+    <Compile Include="StructureScheme.cs" />
     <Compile Include="UI.xaml.cs">
       <DependentUpon>UI.xaml</DependentUpon>
       <SubType>Code</SubType>

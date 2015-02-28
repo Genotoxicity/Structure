@@ -19,16 +19,16 @@ namespace Structure
     /// </summary>
     public partial class DevicesWindow : Window
     {
-        public DevicesWindow(ProjectEntities projectEntities, Location location)
+        public DevicesWindow(E3Project project, Location location)
         {
             InitializeComponent();
             Title = location.Name;
-            FillDevicesListBox(projectEntities, location);
+            FillDevicesListBox(project, location);
         }
 
-        private void FillDevicesListBox(ProjectEntities projectEntities, Location location)
+        private void FillDevicesListBox(E3Project project, Location location)
         {
-            NormalDevice device = projectEntities.NormalDevice;
+            NormalDevice device = project.NormalDevice;
             foreach (int id in location.DeviceIds)
             {
                 device.Id = id;

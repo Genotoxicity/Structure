@@ -9,6 +9,7 @@
         </Grid.ColumnDefinitions>
         <ListBox Name ="AddressListBox" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch"  Grid.Row="1"/>
         <Button Name="DevicesButton"  Content="Оборудование" Grid.Column="1" HorizontalAlignment="Left" Margin="15" VerticalAlignment="Top" Width="90" Click="DevicesButton_Click"/>
+        <Button Name="SchemeButton" Content="Схема" Grid.Column="1" HorizontalAlignment="Left" Margin="15,50,15,15" VerticalAlignment="Top" Width="90" Click="SchemeButton_Click" />
 
     </Grid>
 </Window>

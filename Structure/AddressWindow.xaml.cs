@@ -19,14 +19,16 @@ namespace Structure
     /// </summary>
     partial class AddressWindow : Window
     {
-        private ProjectEntities projectEntities;
+        private E3Project project;
+        private List<int> planSheetIds;
         private Dictionary<string, Location> locationByName;
 
-        public AddressWindow(ProjectEntities projectEntities, Dictionary<string, Location> locationByName)
+        public AddressWindow(E3Project project, Dictionary<string, Location> locationByName, List<int> planSheetIds)
         {
             InitializeComponent();
-            this.projectEntities = projectEntities;
+            this.project = project;
             this.locationByName = locationByName;
+            this.planSheetIds = planSheetIds;
             List<string> locationNames = locationByName.Keys.ToList();
             locationNames.Sort(new ProELib.Strings.NaturalSortingComparer());
             AddressListBox.ItemsSource = locationNames;
@@ -36,7 +38,14 @@ namespace Structure
         {
             string location = AddressListBox.SelectedItem as string;
             if (!String.IsNullOrEmpty(location))
-                new DevicesWindow(projectEntities, locationByName[location]).Show(); 
+                new DevicesWindow(project, locationByName[location]).Show(); 
+        }
+
+        private void SchemeButton_Click(object sender, RoutedEventArgs e)
+        {
+            string location = AddressListBox.SelectedItem as string;
+            if (!String.IsNullOrEmpty(location))
+                new StructureScheme(project, locationByName[location], planSheetIds); 
         }
     }
 }
