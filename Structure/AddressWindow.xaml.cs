@@ -20,15 +20,13 @@ namespace Structure
     partial class AddressWindow : Window
     {
         private E3Project project;
-        private List<int> planSheetIds;
         private Dictionary<string, Location> locationByName;
 
-        public AddressWindow(E3Project project, Dictionary<string, Location> locationByName, List<int> planSheetIds)
+        public AddressWindow(E3Project project, Dictionary<string, Location> locationByName)
         {
             InitializeComponent();
             this.project = project;
             this.locationByName = locationByName;
-            this.planSheetIds = planSheetIds;
             List<string> locationNames = locationByName.Keys.ToList();
             locationNames.Sort(new ProELib.Strings.NaturalSortingComparer());
             AddressListBox.ItemsSource = locationNames;
@@ -45,7 +43,7 @@ namespace Structure
         {
             string location = AddressListBox.SelectedItem as string;
             if (!String.IsNullOrEmpty(location))
-                new StructureScheme(project, locationByName[location], planSheetIds); 
+                new StructureScheme(project, locationByName[location]); 
         }
     }
 }

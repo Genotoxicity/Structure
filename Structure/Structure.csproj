@@ -77,10 +77,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConnectionManager.cs" />
+    <Compile Include="ConnectionType.cs" />
+    <Compile Include="DeviceStatic.cs" />
     <Compile Include="DevicesWindow.xaml.cs">
       <DependentUpon>DevicesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeviceType.cs" />
+    <Compile Include="Equipment.cs" />
+    <Compile Include="EquipmentSymbol.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="IdConnection.cs" />
+    <Compile Include="LayoutElement.cs" />
+    <Compile Include="PinInfo.cs" />
+    <Compile Include="PinSymbol.cs" />
+    <Compile Include="SchemeType.cs" />
     <Compile Include="Script.cs" />
     <Compile Include="ScriptType.cs" />
     <Compile Include="StructureScheme.cs" />

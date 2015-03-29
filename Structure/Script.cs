@@ -9,14 +9,11 @@ namespace Structure
 {
     class Script
     {
-        private const int PlanCode = 102;
-
         public void Start(int processId)
         {
             E3Project project = new E3Project(processId);
-            List<int> planSheetIds = project.GetSheetIdsByType(PlanCode);
-            Dictionary<string, Location> locationByName = GetLocationByName(project, planSheetIds);
-            AddressWindow addressWindow = new AddressWindow(project, locationByName, planSheetIds);
+            Dictionary<string, Location> locationByName = GetLocationByName(project);
+            AddressWindow addressWindow = new AddressWindow(project, locationByName);
             addressWindow.Show();
             project.Release();
         }
@@ -38,12 +35,12 @@ namespace Structure
             return netSegmentPinIds;
         }*/
 
-        private Dictionary<string, Location> GetLocationByName(E3Project project, List<int> planSheetIds)
+        private Dictionary<string, Location> GetLocationByName(E3Project project)
         {
             Sheet sheet = project.Sheet;
             NormalDevice device = project.NormalDevice;
-            HashSet<int> addedDeviceIds = new HashSet<int>();
             Dictionary<string, Location> locationByName = new Dictionary<string, Location>();
+            List<int> planSheetIds = project.GetSheetIdsByType((int)SchemeType.Plan);
             foreach (int sheetId in planSheetIds)
             {
                 sheet.Id = sheetId;
@@ -52,26 +49,22 @@ namespace Structure
                     device.Id = symbolId;
                     string location = String.Intern(device.Location);
                     if (!String.IsNullOrEmpty(location))
-                    {
-                        int deviceId = device.Id;
                         if (!locationByName.ContainsKey(location))
                             locationByName.Add(location, new Location(location));
-                        locationByName[location].AddDeviceId(deviceId);
-                        addedDeviceIds.Add(deviceId);
-                    }
                 }
             }
             List<int> deviceIds = project.DeviceIds;
             deviceIds.AddRange(project.TerminalIds);
             foreach (int deviceId in deviceIds)
             {
-                if (!addedDeviceIds.Contains(deviceId))
-                {
-                    device.Id = deviceId;
-                    string location = String.Intern(device.Location);
-                    if (locationByName.ContainsKey(location))
-                        locationByName[location].AddDeviceId(deviceId);
-                }
+                device.Id = deviceId;
+                if (device.IsView)
+                    continue;
+                if (DeviceStatic.GetDeviceType(project, deviceId) == DeviceType.Connector)
+                    continue;
+                string location = String.Intern(device.Location);
+                if (locationByName.ContainsKey(location))
+                    locationByName[location].AddDeviceId(deviceId);
             }
             return locationByName;
         }
